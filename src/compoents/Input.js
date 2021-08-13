@@ -15,7 +15,7 @@ function Input() {
 
   const sendPost = (e) => {
     e.preventDefault();
-    return (document.getElementById("log").innerHTML = inputRef.current.value);
+    // return (document.getElementById("log").innerHTML = inputRef.current.value);
     // if (!inputRef.current.value) return;
 
     // inputRef.current.value = "";
@@ -55,7 +55,7 @@ function Input() {
           )}
         </Gif>
       </InputIcons>
-      <div id="log"></div>
+      {/* <div id="log"></div> */}
     </InputContainer>
   );
 }
