@@ -65,12 +65,12 @@ function Input() {
 export default Input;
 
 const InputContainer = styled.div`
-  max-width: 70%;
+  max-width: 50%;
   align-items: center;
   text-align: center;
   padding: 10px;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 25%;
+  margin-right: 25%;
   background-color: white;
   padding-left: 13px;
   border-radius: 10px;

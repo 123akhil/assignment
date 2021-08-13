@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-function Giphy({setGIFData}) {
+function Giphy({ setGIFData }) {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   useEffect(() => {
@@ -23,7 +23,13 @@ function Giphy({setGIFData}) {
     return data.map((e) => {
       return (
         <gif key={e.id}>
-          <img alt="" src={e.images.fixed_height.url} onClick={() => { setGIFData(e.images.fixed_height.url)}} />
+          <img
+            alt=""
+            src={e.images.fixed_height.url}
+            onClick={() => {
+              setGIFData(e.images.fixed_height.url);
+            }}
+          />
         </gif>
       );
     });
@@ -54,7 +60,7 @@ function Giphy({setGIFData}) {
             type="text"
             placeholder="Search GIF"
           />
-          <button onClick={handleSubmit} type="submit" id="btnSearch">
+          <button hidden onClick={handleSubmit} type="submit" id="btnSearch">
             Go
           </button>
         </form>
@@ -85,21 +91,13 @@ const GiphyForm = styled.div`
     width: 85%;
     border: 1px solid gray;
     border-radius: 50px;
-    padding: 10px;
-    margin-left: 10px;
+    padding: 8px;
     outline: none;
 
     font-family: Georgia, "Times New Roman", Times, serif;
   }
   > form > button {
-    font-size: large;
-    background-color: pink;
-    padding: 2px;
-    border-radius: 10px;
-    margin: 4px;
-    :hover {
-      background-color: #ec30ec;
-    }
+    display: none;
   }
 `;
 const GiphyGifs = styled.div`
@@ -113,14 +111,14 @@ const GiphyGifs = styled.div`
   position: relative;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #ec30ec;
+    background: #1d1a19;
     border-radius: 20px;
   }
   &::-webkit-scrollbar-track {
-    background: pink;
+    background: #e6dadc;
     border-radius: 20px;
   }
 `;
