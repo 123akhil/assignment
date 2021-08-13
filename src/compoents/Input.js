@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import VideocamIcon from "@material-ui/icons/Videocam";
@@ -8,12 +8,18 @@ import PhotoCameraIcon from "@material-ui/icons/PhotoCamera";
 import GifIcon from "@material-ui/icons/Gif";
 import Modal from "./Modal/Modal";
 import Giphy from "./Giphy";
-const sendPost = (e) => {
-  e.preventDefault();
-};
+
 function Input() {
-  const [input, setInput] = useState(""); //picking text from the inputfield
   const [showModal, setShowModal] = useState(false);
+  const inputRef = useRef(null); //picking text from the inputfield
+
+  const sendPost = (e) => {
+    e.preventDefault();
+    return (document.getElementById("log").innerHTML = inputRef.current.value);
+    // if (!inputRef.current.value) return;
+
+    // inputRef.current.value = "";
+  };
   return (
     <InputContainer>
       <InputBody>
@@ -21,9 +27,8 @@ function Input() {
         <form>
           <input
             type="textarea"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={`Type Something`}
+            ref={inputRef}
+            placeholder={`What's on your mindddd.....`}
           />
           <Button hidden type="submit" onClick={sendPost}>
             SEND
@@ -50,6 +55,7 @@ function Input() {
           )}
         </Gif>
       </InputIcons>
+      <div id="log"></div>
     </InputContainer>
   );
 }
