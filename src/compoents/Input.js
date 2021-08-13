@@ -12,6 +12,7 @@ import Giphy from "./Giphy";
 function Input() {
   const [showModal, setShowModal] = useState(false);
   const inputRef = useRef(null); //picking text from the inputfield
+  const [GIFData, setGIFData] = useState({});
 
   const sendPost = (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ function Input() {
           </Button>
         </form>
       </InputBody>
+      {GIFData ? <img alt="" src={GIFData} /> : <></>}
       <br></br>
       <InputIcons>
         <Video>
@@ -50,7 +52,7 @@ function Input() {
           <p> Gif's</p>
           {showModal && (
             <Modal show={showModal} onClose={() => setShowModal(false)}>
-              <Giphy />
+              <Giphy setGIFData={setGIFData} />
             </Modal>
           )}
         </Gif>

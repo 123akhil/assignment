@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-function Giphy() {
+function Giphy({setGIFData}) {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   useEffect(() => {
@@ -23,7 +23,7 @@ function Giphy() {
     return data.map((e) => {
       return (
         <gif key={e.id}>
-          <img alt="" src={e.images.fixed_height.url} />
+          <img alt="" src={e.images.fixed_height.url} onClick={() => { setGIFData(e.images.fixed_height.url)}} />
         </gif>
       );
     });
