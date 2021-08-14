@@ -37,7 +37,7 @@ function Input() {
         </form>
       </InputBody>
       {GIFData ? <img alt="" src={GIFData} /> : <></>}
-      <br></br>
+      <hr></hr>
       <InputIcons>
         <Video>
           <VideoIcon />
@@ -75,6 +75,9 @@ const InputContainer = styled.div`
   padding-left: 13px;
   border-radius: 10px;
   box-shadow: 2px 2px #cec5c5;
+  > hr {
+    border-top: 1px solid gray;
+  }
 `;
 
 const InputBody = styled.div`

@@ -10,7 +10,6 @@ function App() {
         <Heading>
           <h1>Facebook Feed</h1>
         </Heading>
-      <br></br>
           <Input />
           <Posts />
         </div>
@@ -21,6 +20,7 @@ function App() {
 export default App;
 const Heading = styled.div`
   > h1 {
+    text-align: center;
     padding-top: 0;
     align-items: center;
     font-family: Georgia, "Times New Roman", Times, serif;
