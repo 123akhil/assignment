@@ -88,10 +88,10 @@ const GiphyForm = styled.div`
 
   > form > input {
     height: 15px;
-    width: 85%;
+    width: 95%;
     border: 1px solid gray;
-    border-radius: 50px;
-    padding: 8px;
+    border-radius: 8px;
+    padding: 6px;
     outline: none;
 
     font-family: Georgia, "Times New Roman", Times, serif;

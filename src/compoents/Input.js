@@ -97,8 +97,8 @@ const InputBody = styled.div`
     height: 12px;
     width: 90%;
     border: 1px solid gray;
-    border-radius: 50px;
-    padding: 18px;
+    border-radius: 10px;
+    padding: 16px;
     outline: none;
 
     font-family: Georgia, "Times New Roman", Times, serif;
