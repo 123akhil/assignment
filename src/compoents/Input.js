@@ -95,12 +95,12 @@ const InputBody = styled.div`
     border-radius: 10px;
     padding: 16px;
     outline: none;
-
     font-family: Georgia, "Times New Roman", Times, serif;
   }
   > button {
     background-color: #2626e6;
     color: white;
+    margin-left: 10px;
     :hover {
       background-color: #4141c0;
     }
@@ -139,7 +139,7 @@ const InputAvatar = styled(Avatar)`
 `;
 const VideoIcon = styled(VideocamIcon)`
   cursor: pointer;
-  color: red;
+  color: #ff0000;
   margin-right: 4px;
 `;
 const PhotoIcon = styled(PhotoCameraIcon)`
