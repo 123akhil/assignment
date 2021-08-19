@@ -24,7 +24,7 @@ function Posts({ message, gifpost }) {
           </HeaderInfo>
         </HeaderLeft>
 
-        <p style={{ marginLeft: "20px", wordWrap: "break-word" }}>{message}</p>
+        <p style={{ margin: "5px 20px", wordWrap: "break-word" }}>{message}</p>
         <img alt="" src={gifpost} />
       </PostsHeader>
       <PostsFooter>
