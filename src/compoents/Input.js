@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import VideocamIcon from "@material-ui/icons/Videocam";
@@ -9,45 +9,44 @@ import GifIcon from "@material-ui/icons/Gif";
 import Modal from "./Modal/Modal";
 import Giphy from "./Giphy";
 
-function Input() {
+function Input({ message, setMessage, setPost, setGifpost }) {
   const [showModal, setShowModal] = useState(false);
-  const inputRef = useRef(null); //picking text from the inputfield
   const [GIFData, setGIFData] = useState({});
 
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
   const sendPost = (e) => {
     e.preventDefault();
-    // return (document.getElementById("log").innerHTML = inputRef.current.value);
-    // if (!inputRef.current.value) return;
-
-    // inputRef.current.value = "";
+    if (message) {
+      setPost(true);
+      setGifpost(GIFData);
+      setGIFData({});
+    }
   };
   return (
     <InputContainer>
       <InputBody>
         <InputAvatar />
-        <form>
-          <input
-            type="textarea"
-            ref={inputRef}
-            placeholder={`What's on your mindddd.....`}
-          />
-          <Button hidden type="submit" onClick={sendPost}>
-            SEND
-          </Button>
-        </form>
+        <input
+          onChange={handleMessage}
+          type="text"
+          placeholder={`What's on your mindddd.....`}
+        />
+        <Button onClick={sendPost}>POST</Button>
       </InputBody>
       {GIFData ? <img alt="" src={GIFData} /> : <></>}
       <hr></hr>
       <InputIcons>
-        <Video>
+        <Icons>
           <VideoIcon />
           <p> Video</p>
-        </Video>
-        <Images>
+        </Icons>
+        <Icons>
           <PhotoIcon />
           <p> Images </p>
-        </Images>
-        <Gif onClick={() => setShowModal(true)}>
+        </Icons>
+        <Icons onClick={() => setShowModal(true)}>
           <Gifs fontSize="large" />
           <p> Gif's</p>
           {showModal && (
@@ -55,9 +54,8 @@ function Input() {
               <Giphy setGIFData={setGIFData} />
             </Modal>
           )}
-        </Gif>
+        </Icons>
       </InputIcons>
-      {/* <div id="log"></div> */}
     </InputContainer>
   );
 }
@@ -83,22 +81,16 @@ const InputContainer = styled.div`
 const InputBody = styled.div`
   align-items: center;
   display: flex;
-
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5px;
   > .MuiSvgIcon-root {
-    /* margin-left: 150px; */
-    /* margin-right: 30px; */
   }
-  > form {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-  }
-
-  > form > input {
+  > input {
     height: 12px;
-    width: 90%;
+    width: 70%;
     border: 1px solid gray;
     border-radius: 10px;
     padding: 16px;
@@ -106,8 +98,12 @@ const InputBody = styled.div`
 
     font-family: Georgia, "Times New Roman", Times, serif;
   }
-  > form > button {
-    display: none;
+  > button {
+    background-color: #2626e6;
+    color: white;
+    :hover {
+      background-color: #4141c0;
+    }
   }
 `;
 const InputIcons = styled.div`
@@ -116,46 +112,13 @@ const InputIcons = styled.div`
   padding: 0;
   border-top-width: 1px;
 `;
-const Video = styled.div`
+const Icons = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
   justify-content: center;
   padding: 4px;
-  > p {
-    align-items: flex-start;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  :hover {
-    background-color: rgb(235, 227, 227);
-  }
-`;
-const Images = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 4px;
-  > p {
-    align-items: flex-start;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  :hover {
-    background-color: rgb(235, 227, 227);
-  }
-`;
-const Gif = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 4px;
+  cursor: pointer;
   > p {
     align-items: flex-start;
     padding: 0;

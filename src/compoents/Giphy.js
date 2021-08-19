@@ -109,6 +109,7 @@ const GiphyGifs = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  cursor: pointer;
 
   &::-webkit-scrollbar {
     width: 5px;

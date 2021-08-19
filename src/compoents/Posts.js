@@ -1,11 +1,10 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
 import styled from "styled-components";
-import Post from "./Modal/Akhil.jpg";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import TextsmsIcon from "@material-ui/icons/Textsms";
 import ShareIcon from "@material-ui/icons/Share";
-function Posts() {
+function Posts({ message, gifpost }) {
   return (
     <PostsContainer>
       <PostsHeader>
@@ -25,22 +24,19 @@ function Posts() {
           </HeaderInfo>
         </HeaderLeft>
 
-        <p>
-          I like PIZZA when mushrooms, jalapenos, and extra cheese are added
-          more.
-        </p>
-        <img alt="" src={Post} />
+        <p style={{ marginLeft: "20px", wordWrap: "break-word" }}>{message}</p>
+        <img alt="" src={gifpost} />
       </PostsHeader>
       <PostsFooter>
-        <LikeIcon>
+        <Icon>
           <ThumbUpIcon style={{ fontSize: "medium" }} />
-        </LikeIcon>
-        <CommentIcon>
+        </Icon>
+        <Icon>
           <TextsmsIcon style={{ fontSize: "medium" }} />
-        </CommentIcon>
-        <SharingIcon>
+        </Icon>
+        <Icon>
           <ShareIcon style={{ fontSize: "medium" }} />
-        </SharingIcon>
+        </Icon>
       </PostsFooter>
     </PostsContainer>
   );
@@ -52,6 +48,7 @@ const PostsContainer = styled.div`
   max-width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+  margin-bottom: 10%;
   background-color: white;
   padding-left: 6px;
   border-radius: 10px;
@@ -63,13 +60,17 @@ const PostsHeader = styled.div`
   padding: 5px;
   padding-left: 0px;
   margin-top: 10px;
+  > img {
+    margin: 0 10px;
+  }
 `;
 const HeaderLeft = styled.div`
+  margin: 10px 0 0 10px;
   display: flex;
   align-items: center;
 `;
 const PostAvatar = styled(Avatar)`
-  margin-right: 5px;
+  margin-right: 10px;
 `;
 const HeaderInfo = styled.div``;
 const PostsFooter = styled.div`
@@ -79,30 +80,10 @@ const PostsFooter = styled.div`
   border-bottom-right-radius: 1rem;
   background-color: white;
   color: gray;
-  border-top-width: 1px;
+  padding: 5px;
 `;
 
-const LikeIcon = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 4px;
-  :hover {
-    background-color: rgb(235, 227, 227);
-  }
-`;
-const CommentIcon = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  justify-content: center;
-  padding: 4px;
-  :hover {
-    background-color: rgb(235, 227, 227);
-  }
-`;
-const SharingIcon = styled.div`
+const Icon = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
