@@ -21,11 +21,11 @@ function Input({ posts, setPosts }) {
     e.preventDefault();
     if (message) {
       setPosts([
-        ...posts,
         {
           gifpost: GIFData,
           message: message,
         },
+        ...posts,
       ]);
       setGIFData({});
       setMessage("");
