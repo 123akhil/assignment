@@ -6,17 +6,15 @@ import { useState } from 'react';
 
 
 function App() {
-  const [message, setMessage] = useState("");
-  const[post, setPost] = useState(false);
-  const[gifpost, setGifpost] = useState({});
+  const[posts, setPosts] = useState([]);//a
   return (
     <div className="App">
         <div>
-        <Heading>
-          <h1>Facebook Feed</h1>
-        </Heading>
-          <Input setPost={setPost} message={message} setMessage={setMessage} setGifpost={setGifpost}/>
-          {post? <Posts gifpost={gifpost} message={message}/> : <></>}
+          <Heading>
+            <h1>Facebook Feed</h1>
+          </Heading>
+          <Input setPosts={setPosts} posts={posts}/>
+          {posts.length ? posts.map((post, index) => <Posts gifpost={post.gifpost} message={post.message} setPosts={setPosts} posts={posts} index={index}/>) : <></>}
         </div>
     </div>
   );

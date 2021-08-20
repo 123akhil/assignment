@@ -15,7 +15,6 @@ function Giphy({ setGIFData }) {
       console.log(results); //remove
       setData(results.data.data);
     };
-
     fetchData();
   }, []);
 

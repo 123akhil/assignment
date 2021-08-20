@@ -4,7 +4,12 @@ import styled from "styled-components";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import TextsmsIcon from "@material-ui/icons/Textsms";
 import ShareIcon from "@material-ui/icons/Share";
-function Posts({ message, gifpost }) {
+import CloseIcon from "@material-ui/icons/Close";
+
+function Posts({ message, gifpost, index, posts, setPosts }) {
+  const deletePost = () => {
+    setPosts(posts.filter((_, i) => index !== i));
+  };
   return (
     <PostsContainer>
       <PostsHeader>
@@ -22,6 +27,9 @@ function Posts({ message, gifpost }) {
               8/14/2021 12:32pm
             </p>
           </HeaderInfo>
+          <CloseIconWrapper onClick={deletePost}>
+            <CloseIcon style={{ fontSize: "medium" }}></CloseIcon>
+          </CloseIconWrapper>
         </HeaderLeft>
 
         <p style={{ margin: "5px 20px", wordWrap: "break-word" }}>{message}</p>
@@ -48,7 +56,6 @@ const PostsContainer = styled.div`
   max-width: 50%;
   margin-left: 25%;
   margin-right: 25%;
-  margin-bottom: 10%;
   background-color: white;
   padding-left: 6px;
   border-radius: 10px;
@@ -92,4 +99,11 @@ const Icon = styled.div`
   :hover {
     background-color: rgb(235, 227, 227);
   }
+`;
+const CloseIconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  margin-right: 8px;
+  cursor: pointer;
 `;

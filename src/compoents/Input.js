@@ -9,9 +9,10 @@ import GifIcon from "@material-ui/icons/Gif";
 import Modal from "./Modal/Modal";
 import Giphy from "./Giphy";
 
-function Input({ message, setMessage, setPost, setGifpost }) {
+function Input({ posts, setPosts }) {
   const [showModal, setShowModal] = useState(false);
   const [GIFData, setGIFData] = useState({});
+  const [message, setMessage] = useState("");
 
   const handleMessage = (e) => {
     setMessage(e.target.value);
@@ -19,9 +20,15 @@ function Input({ message, setMessage, setPost, setGifpost }) {
   const sendPost = (e) => {
     e.preventDefault();
     if (message) {
-      setPost(true);
-      setGifpost(GIFData);
+      setPosts([
+        ...posts,
+        {
+          gifpost: GIFData,
+          message: message,
+        },
+      ]);
       setGIFData({});
+      setMessage("");
     }
   };
   return (
@@ -30,6 +37,7 @@ function Input({ message, setMessage, setPost, setGifpost }) {
         <InputAvatar />
         <input
           onChange={handleMessage}
+          value={message}
           type="text"
           placeholder={`What's on your mindddd.....`}
         />
